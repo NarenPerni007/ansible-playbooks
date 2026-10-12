@@ -1,0 +1,18 @@
+---
+# Change these before running against real hosts.
+
+timezone: America/New_York
+admin_user: deploy
+ssh_port: 22
+
+ntp_servers:
+  - 0.pool.ntp.org
+  - 1.pool.ntp.org
+
+# App the nginx vhost proxies to
+app_port: 3000
+server_name: _
+
+# Docker: add admin_user to the docker group
+docker_users:
+  - "{{ admin_user }}"
