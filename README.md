@@ -7,13 +7,13 @@ Tested on Ubuntu 22.04.
 
 ## Layout
 
-- `site.yml` — the whole run: common -> hardening -> docker -> nginx
-- `inventory.example.ini` — example inventory, copy to `inventory.ini`
-- `group_vars/all.yml` — the knobs (timezone, admin user, ssh port, app port)
-- `roles/common` — apt update, base packages, timezone, unattended-upgrades, admin user
-- `roles/hardening` — sshd config (no root login, no password auth), sysctl tweaks, fail2ban
-- `roles/docker` — Docker engine + compose plugin from Docker's repo, users added to the docker group
-- `roles/nginx` — nginx with a reverse-proxy vhost to `127.0.0.1:{{ app_port }}`
+- `site.yml` - the whole run: common -> hardening -> docker -> nginx
+- `inventory.example.ini` - example inventory, copy to `inventory.ini`
+- `group_vars/all.yml` - the knobs (timezone, admin user, ssh port, app port)
+- `roles/common` - apt update, base packages, timezone, unattended-upgrades, admin user
+- `roles/hardening` - sshd config (no root login, no password auth), sysctl tweaks, fail2ban
+- `roles/docker` - Docker engine + compose plugin from Docker's repo, users added to the docker group
+- `roles/nginx` - nginx with a reverse-proxy vhost to `127.0.0.1:{{ app_port }}`
 
 ## Quickstart
 
