@@ -1,12 +1,23 @@
 ---
-- name: Add Docker GPG key
-  apt_key:
+- name: Create the apt keyrings directory
+  file:
+    path: /etc/apt/keyrings
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Download the Docker GPG key into its own keyring
+  get_url:
     url: https://download.docker.com/linux/ubuntu/gpg
-    state: present
+    dest: "{{ docker_keyring_path }}"
+    owner: root
+    group: root
+    mode: "0644"
 
 - name: Add Docker apt repo
   apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+    repo: "deb [arch={{ docker_arch }} signed-by={{ docker_keyring_path }}] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
     state: present
     filename: docker
 
